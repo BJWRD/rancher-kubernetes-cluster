@@ -53,6 +53,8 @@ The next step is an important one, you will now be in the position to set the Ra
       ifconfig
       ipconfig
       
+![image](https://user-images.githubusercontent.com/83971386/214243499-48ace274-f409-4e80-b810-a25dc9840157.png)
+
 ## Cluster Configuration and Setup
 
 ### 1. Adding the Cluster
@@ -80,8 +82,6 @@ These commands will need to be entered within the running Minikube Cluster -
       kubectl apply -f https://localhost/v3/import/7lzggvls7m2cdhr8ptl87nflwktjdgjn5cpr99kwb7tvsjvm8zvkvr_c-m-5ql2dkvx.yaml
       curl --insecure -sfL https://localhost/v3/import/7lzggvls7m2cdhr8ptl87nflwktjdgjn5cpr99kwb7tvsjvm8zvkvr_c-m-5ql2dkvx.yaml | kubectl apply -f -
       kubectl create clusterrolebinding cluster-admin-binding --clusterrole cluster-admin --user <your username from your kubeconfig>
-      
-Enter Image
 
 ### 3. Cluster Rancher Verification
 Now just wait a few minutes so that your cluster’s State changes from Pending to Active. Once changed, click on your Cluster’s Name and you will see this screen -
@@ -92,7 +92,7 @@ This verifies that the Minikube Cluster has been successfully imported within yo
 
 ## Deploying an example Workload 
 
-configmap, secret, deployment, service
+
 
 ## List of tools/services used
 * [Minikube](https://minikube.sigs.k8s.io/docs/)
