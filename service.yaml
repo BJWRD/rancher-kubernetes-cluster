@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-service
+  namespace: webapp-namespace
+spec:
+    type: NodePort
+    ports:
+    - port: 8080
+      targetPort: http-webapp-svc
+      protocol: TCP
+      nodePort: 30080
+    selector:
+      app: webapp
+      type: front-end
