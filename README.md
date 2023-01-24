@@ -1,5 +1,5 @@
 # rancher-kubernetes-cluster
-The following project includes Rancher setup/configuration, Minikube Cluster importation/configuration, and the deployment of an example workload.
+The following project includes Rancher setup/configuration, Minikube Cluster importation/configuration, and the deployment of a simple Webapp.
 
 ## Prerequisites
 * Minikube installation - [steps](https://minikube.sigs.k8s.io/docs/start/)
@@ -25,7 +25,7 @@ If you are installing Rancher for learning purposes and therefore identity verif
       
 This command will run a Rancher container on port 80 and 443.
 
-Enter Image 
+<img width="563" alt="image" src="https://user-images.githubusercontent.com/83971386/214293091-0631c666-bdaf-4a50-9f78-52e3544cbe7c.png">
 
 ## Accessing Rancher 
 
@@ -70,7 +70,7 @@ Enter the name of the cluster and description, then select the 'Create' button.
 
 **NOTE:** There is also the option of entering environment variables and assigning a label/annotation.
 
-![image](https://user-images.githubusercontent.com/83971386/214011948-d44814a7-7471-41b2-9bed-27b4c5816b18.png)
+<img width="506" alt="image" src="https://user-images.githubusercontent.com/83971386/214292910-67bd8975-40c6-4896-9eb5-15c3c196b9a3.png">
 
 ### 2. Register the Cluster into Rancher
 Now it's time to register the Cluster into Rancher. This can be done by following the instructions within the screenshot below -
@@ -86,13 +86,66 @@ These commands will need to be entered within the running Minikube Cluster -
 ### 3. Cluster Rancher Verification
 Now just wait a few minutes so that your cluster’s State changes from Pending to Active. Once changed, click on your Cluster’s Name and you will see this screen -
 
-Enter Image
+<img width="596" alt="image" src="https://user-images.githubusercontent.com/83971386/214292634-fed0144d-98fc-4a46-95ae-4951cbe0c325.png">
 
 This verifies that the Minikube Cluster has been successfully imported within your Rancher setup.
 
-## Deploying an example Workload 
+## KubeConfig Configuration
 
+### 1. Download the Cluster KubeConfig file
+Access the newly imported cluster and select the following buttons to download the Clusters kubeConfig file -
 
+<img width="511" alt="image" src="https://user-images.githubusercontent.com/83971386/214250194-0ee79f96-1c1b-43a1-b2f8-7ae044575017.png">
+
+### 2. Access the downloaded KubeConfig file
+Using an IDE of your choice, open the downloaded cluster.yaml file, to view your cluster contents -
+
+<img width="439" alt="image" src="https://user-images.githubusercontent.com/83971386/214250672-c882c6a5-cb69-4838-a05f-9805ca980628.png">
+
+### 3. Test Cluster access via Kubectl/KubeConfig
+
+      kubectl get node --kubeconfig=/pathofkubeconfigfile/test.yaml
+
+<img width="284" alt="image" src="https://user-images.githubusercontent.com/83971386/214279744-14dfd4d9-9de6-4c99-9702-d4528e5471e7.png">
+
+## Deploying an example Workload - Hello World webapp
+
+### 1. Clone this repository
+
+      git clone https://github.com/BJWRD/rancher-kubernetes-cluster
+      
+### 2. Create the Kubernetes resources 
+
+      kubectl create -f namespace.yaml
+      kubectl create -f configmap.yaml
+      kubectl create -f deployment.yaml
+      kubectl create -f service.yaml
+      
+### 3. View all created Kubernetes resources
+
+      kubectl -n webapp-namespace get all
+      
+<img width="544" alt="image" src="https://user-images.githubusercontent.com/83971386/214288624-489827fc-3cb4-4451-be2b-c3be60ae0f49.png">
+      
+You can also view the newly created resources via the Rancher GUI -
+
+<img width="813" alt="image" src="https://user-images.githubusercontent.com/83971386/214289036-3515a160-ad6a-4b29-98ed-3d8d3eb697cc.png">
+
+### 4. Test Webapp Deployment
+
+      minikube service list
+      
+<img width="542" alt="image" src="https://user-images.githubusercontent.com/83971386/214291303-75141ace-fb9d-48df-8663-ed304c61c68d.png">
+
+Due to Rancher using Port 8080, we will need to port forward to Port 8081 for the Webapp to then be accessible -
+
+      kubectl -n webapp-namespace port-forward svc/webapp-service 8081:8080
+      
+<img width="693" alt="image" src="https://user-images.githubusercontent.com/83971386/214291628-87b8670a-784c-413e-a98f-465740ad0844.png">
+
+      curl http://localhost:8081
+      
+<img width="448" alt="image" src="https://user-images.githubusercontent.com/83971386/214292308-98d936d2-9121-4ac2-a311-c494692005cf.png">
 
 ## List of tools/services used
 * [Minikube](https://minikube.sigs.k8s.io/docs/)
