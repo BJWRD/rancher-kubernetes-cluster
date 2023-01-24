@@ -1,0 +1,23 @@
+#configmap-definition.yml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+  namespace: webapp-namespace
+  labels:
+    app: webapp
+    type: front-end
+data:
+  nginx.conf: '
+  events {
+  }
+  http {
+  server {
+    listen       8080;
+    location / {
+      return 200 "Hello world!";
+      return 200 "";
+    }
+  }
+}
+'
