@@ -38,8 +38,6 @@ This command will run a Rancher container on port 80 and 443.
       docker logs  container-id  2>&1 | grep "Bootstrap Password:"
  
 ![image](https://user-images.githubusercontent.com/83971386/214004856-0a146f17-2363-4c13-8ef2-1c783786a815.png)
-
-Enter image of bootstrapping password
  
  ### 2. Setting your own password
  You will then be prompted to set your own password for access to Rancher -
