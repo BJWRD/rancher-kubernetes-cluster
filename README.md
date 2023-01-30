@@ -151,6 +151,7 @@ Due to Rancher using Port 8080, we will need to port forward to Port 8081 for th
 * [Minikube](https://minikube.sigs.k8s.io/docs/)
 * [Docker](https://docs.docker.com/get-started/overview/)
 * [K8s Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
+* [Rancher](https://ranchermanager.docs.rancher.com)
 
 ## Useful Links -
 * https://ranchermanager.docs.rancher.com/v2.5/pages-for-subheaders/rancher-on-a-single-node-with-docker
