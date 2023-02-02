@@ -81,6 +81,8 @@ These commands will need to be entered within the running Minikube Cluster -
       curl --insecure -sfL https://localhost/v3/import/7lzggvls7m2cdhr8ptl87nflwktjdgjn5cpr99kwb7tvsjvm8zvkvr_c-m-5ql2dkvx.yaml | kubectl apply -f -
       kubectl create clusterrolebinding cluster-admin-binding --clusterrole cluster-admin --user <your username from your kubeconfig>
 
+**NOTE:** Your kubeconfig username can be found within the following file - `~/.kube/config`
+
 ### 3. Cluster Rancher Verification
 Now just wait a few minutes so that your cluster’s State changes from Pending to Active. Once changed, click on your Cluster’s Name and you will see this screen -
 
